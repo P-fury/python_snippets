@@ -1,4 +1,5 @@
 from abc import ABC
+from dataclasses import dataclass
 
 
 class ImmutableClass(ABC):
@@ -30,12 +31,30 @@ class ImmutableClass(ABC):
 
 
 # EXAMPLE:
-class Pointer(ImmutableClass):
+class PointOne(ImmutableClass):
     pass
 
-p = Pointer()
+p = PointOne()
 p.x = 1
 p.y = 2
 
 # del p.y
-p.x = 3
+# p.x = 3
+
+
+#DATA CLASS dekorator blokujacy mutowanie klas
+@dataclass(frozen=True)
+class PointTwo:
+    x: int
+    y: int
+    name: str
+
+    def __post_init__(self):
+        if self.name.strip() == '':
+            raise ValueError(f'Name is empty')
+
+p2 = PointTwo(x=1, y=2, name='  ')
+print(p2)
+# p2.x = 42
+
+
