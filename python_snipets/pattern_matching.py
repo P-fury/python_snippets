@@ -49,15 +49,23 @@ def ex_3():
 
 
 def ex_4():
-    for calls in [1,2,3], (4,5,6), {"a":42}:
+    for calls in [1,2,3], (4,5,6,7,6,5,3,4,5), {"a":42}:
         match calls:
             case [1,2,3] as my_list:
                 print(f"list: {my_list}")
-            case (_,5 as my_int,_) as my_tupe:
+            case (_,5 as my_int, _, *i) as my_tupe:
                 print(f"tuple: {my_tupe} with {my_int}")
             case {"a": 42} as my_dict:
                 print(f"dict: {my_dict}")
             case _:
                 print(f"unknown: {calls}")
 
-ex_4()
+
+
+# walrus operator (dynamiczne tworzenie zmiennej)
+def ex_5():
+    match the_answer:= 2* 1* 3*7:
+        case _:
+            print(f'the answer is {the_answer}')
+
+ex_5()
