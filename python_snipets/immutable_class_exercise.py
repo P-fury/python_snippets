@@ -61,3 +61,34 @@ def update_todos(todo_list: TodoList, prev_todo: Todo, next_todo: Todo) -> TodoL
 tx = change_todo_name(t1, 'yolo')
 t_coll = update_todos(t_coll, t1, tx)
 print(t_coll)
+
+
+
+# EXAMPLE CURRING:
+
+def add(a,b):
+    return a+b
+
+def curry(a):
+    def _(b):
+        return a + b
+    return _
+
+print(curry(1)(2))
+
+
+def sub(a,b):
+    return a-b
+
+
+def curry2(fn):
+    def _(a):
+        def __(b):
+            return fn(a,b)
+        return __
+    return _
+
+print(curry2(sub)(1)(2))
+print(curry2(add)(1)(2))
+
+
