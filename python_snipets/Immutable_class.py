@@ -53,7 +53,9 @@ class PointTwo:
         if self.name.strip() == '':
             raise ValueError(f'Name is empty')
 
-p2 = PointTwo(x=1, y=2, name='  ')
+
+# EXAMPLE:
+p2 = PointTwo(x=1, y=2, name='a')
 print(p2)
 # p2.x = 42
 
